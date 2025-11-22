@@ -1,0 +1,482 @@
+.component-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+.component-container h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+
+.shipment-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Background image untuk dropdown arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2013l128%20128c3.6%203.6%207.8%205.4%2013%205.4s9.4-1.8%2013-5.4l128-128c3.6-3.6%205.4-7.8%205.4-13%200-4.8-1.8-9.2-5.4-13z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+.form-group select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+.form-group.full-width {
+    grid-column: 1 / -1; 
+}
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.shipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.shipment-table th, .shipment-table td {
+    border: 1px solid #eee;
+    padding: 8px 10px; /* 🚨 PERBAIKAN: Mengurangi padding vertikal */
+    text-align: left;
+    word-break: break-word; 
+    white-space: normal; 
+    vertical-align: top; /* 🚨 PERBAIKAN: Konten rata atas */
+}
+.shipment-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+.shipment-table tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+.shipment-table .actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap; 
+}
+
+
+.status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #fff;
+    white-space: nowrap; 
+    display: inline-block;
+}
+.status-At-Drop-Point {
+    background-color: #007bff;
+}
+.status-Ready-for-Pickup {
+    background-color: #ffc107; 
+    color: #333;
+}
+
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+button:hover {
+    opacity: 0.8;
+}
+.btn-save { background-color: #28a745; color: white; }
+.btn-cancel { background-color: #6c757d; color: white; }
+.btn-request { background-color: #17a2b8; color: white; }
+.btn-delete { background-color: #dc3545; color: white; }
+
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 300ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+    transform: scale(1);
+}
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+    transform: scale(1.1);
+}
+.ReactModal__Content {
+    padding: 0;
+    border: none;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 8px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+}
+.ReactModal__Content .component-container {
+    margin-bottom: 0;
+}
+.ReactModal__Content .component-container h2 {
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+
+.sidebar-add-new {
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.add-shipment-button-sidebar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.add-shipment-button-sidebar:hover {
+    background-color: #0056b3;
+}
+
+/* =================================== */
+/* 🔑 STYLING KHUSUS LOGIN PAGE */
+/* =================================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f7f6; 
+    padding: 20px;
+}
+
+.login-box {
+    background-color: #ffffff;
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 400px; 
+    box-sizing: border-box;
+}
+
+.login-box h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: none; 
+    font-weight: 700;
+}
+
+.login-box .form-group {
+    margin-bottom: 20px;
+}
+
+.login-box .form-group label {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.login-box .form-group input {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-box .form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.login-box button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #007bff; 
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+}
+
+.login-box button[type="submit"]:hover {
+    background-color: #0056b3;
+    opacity: 1; 
+}
+
+.login-box .error-message {
+    color: #dc3545; 
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.login-box button[type="submit"]:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* =================================== */
+/* 0. FIX LAYOUT UTAMA */
+/* =================================== */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =================================== */
+/* 1. STYLING HEADER BAR DAN DROPDOWN BARU */
+/* =================================== */
+
+.header {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dropdown-wrapper {
+    position: relative; 
+    cursor: pointer;
+}
+
+.user-info-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.user-info-trigger:hover {
+    background-color: #f0f0f0;
+}
+
+.header .welcome-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.dropdown-arrow {
+    font-size: 0.7rem;
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+    color: #6c757d; 
+}
+
+.dropdown-arrow.up {
+    transform: rotate(180deg);
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    z-index: 100;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    margin-top: 10px; 
+    overflow: hidden;
+}
+
+.dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-item.btn-delete {
+    color: #dc3545; 
+    background-color: transparent;
+    border-radius: 0;
+    font-weight: 600;
+}
+.dropdown-item.btn-delete:hover {
+    background-color: #f8d7da; 
+}
+
+/* =================================== */
+/* 2. STYLING MODAL COURIER ASSIGNMENT */
+/* =================================== */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px; 
+    border-radius: 8px;
+    width: 90%;
+    max-width: 750px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+.courier-list {
+    max-height: 500px; 
+    overflow-y: auto; 
+    margin-top: 15px;
+    border: 1px solid #ddd; 
+    padding: 10px;
+    background-color: #fcfcfc;
+    border-radius: 5px;
+}
+
+.courier-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0; 
+    border-bottom: 1px dashed #eee; 
+}
+
+.courier-item:last-child {
+    border-bottom: none;
+}
+
+.btn-assign {
+    padding: 8px 15px; 
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+.btn-assign:hover {
+    background-color: #45a049;
+}
+
+
+.btn-close {
+    margin-top: 25px; 
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    float: right;
+}
+.btn-close:hover {
+    background-color: #da190b;
+}
+
+/* Style untuk text "Tidak Dapat Ditugaskan" */
+.courier-item span[style*="color: #777"] {
+    font-style: italic;
+}
+.shipment-table small {
+    display: block; 
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 0px; 
+    line-height: 1.2;
+}
+.shipment-table strong {
+    font-weight: 600;
+    display: inline-block;
+    line-height: 1.2; 
+}
