@@ -8,4 +8,4 @@ npm run build
 
 ### Config
 
-atur baseurl untuk logistics_api di /src/config.js
+atur baseurl untuk /logistics_api di /src/config.js
