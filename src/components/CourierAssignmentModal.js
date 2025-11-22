@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { API_ENDPOINT } from '../config'; 
 
-const API_URL = "http://localhost/RPL/logistics_api/api.php"; 
 const TARGET_STATUS = 'TERSEDIA'; 
 
 function CourierAssignmentModal({ shipmentId, onClose, onAssignmentSuccess }) {
@@ -15,7 +15,7 @@ function CourierAssignmentModal({ shipmentId, onClose, onAssignmentSuccess }) {
         const fetchCouriers = async () => {
             setLoading(true);
             try {
-                const response = await fetch(API_URL + "?resource=couriers"); 
+                const response = await fetch(API_ENDPOINT + "?resource=couriers"); 
                 
                 if (!response.ok) {
                     throw new Error(`Gagal memuat data kurir: ${response.status}`);
@@ -52,7 +52,7 @@ function CourierAssignmentModal({ shipmentId, onClose, onAssignmentSuccess }) {
         };
 
         try {
-            const response = await fetch(`${API_URL}?id=${shipmentId}&resource=shipments`, {
+            const response = await fetch(`${API_ENDPOINT}?id=${shipmentId}&resource=shipments`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updateData),

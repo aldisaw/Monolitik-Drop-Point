@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './components.css';
+import { API_ENDPOINT } from '../config';
 
 function ShipmentList({ refreshTrigger, onSelectShipment, refreshShipmentList }) {
   const [shipments, setShipments] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost/RPL/logistics_api/api.php";
-
   const fetchShipments = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}?resource=shipments`);
+      const response = await fetch(`${API_ENDPOINT}?resource=shipments`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       console.log("Data shipments:", data);
@@ -35,7 +34,7 @@ function ShipmentList({ refreshTrigger, onSelectShipment, refreshShipmentList })
     if (!window.confirm("Yakin batalkan penugasan kurir? Status akan dikembalikan ke 'At Drop Point'.")) return;
 
     try {
-      const response = await fetch(`${API_URL}?id=${shipmentId}&resource=shipments`, {
+      const response = await fetch(`${API_ENDPOINT}?id=${shipmentId}&resource=shipments`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -59,7 +58,7 @@ function ShipmentList({ refreshTrigger, onSelectShipment, refreshShipmentList })
   const handleDelete = async (id) => {
     if (!window.confirm("Apakah Anda yakin ingin menghapus pengiriman ini?")) return;
     try {
-      const response = await fetch(`${API_URL}?id=${id}&resource=shipments`, {
+      const response = await fetch(`${API_ENDPOINT}?id=${id}&resource=shipments`, {
         method: 'DELETE',
       });
       const result = await response.json();

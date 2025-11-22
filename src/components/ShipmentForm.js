@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './components.css';
-
+import {
+	API_ENDPOINT
+} from '../config';
 
 
 function ShipmentForm({ onShipmentAdded, onCancel }) {
@@ -25,7 +27,8 @@ function ShipmentForm({ onShipmentAdded, onCancel }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost/RPL/logistics_api/api.php', {
+      const url = API_ENDPOINT;
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData), 

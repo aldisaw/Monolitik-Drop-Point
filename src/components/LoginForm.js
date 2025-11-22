@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_ENDPOINT } from '../config';
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -7,7 +8,6 @@ const LoginForm = ({ onLoginSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   
   // Ganti URL ini sesuai dengan lokasi file api.php Anda
-  const API_URL = 'http://localhost/RPL/logistics_api/api.php'; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const LoginForm = ({ onLoginSuccess }) => {
     }
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
