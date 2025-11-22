@@ -2,7 +2,7 @@
 
 npm install
 
-### Untuk build
+### Build
 
 npm run build
 
