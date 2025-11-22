@@ -2,6 +2,10 @@
 
 npm install
 
-## Untuk build
+### Untuk build
 
 npm run build
+
+### Config
+
+atur baseurl untuk logistics_api di /src/config.js
